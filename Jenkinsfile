@@ -23,6 +23,7 @@ pipeline {
                     sh """
                     ssh -o StrictHostKeyChecking=no  $DEPLOY_USER@$DEPLOY_HOST '
                         sudo rm -rf $DEPLOY_PATH/*
+                     '
                         sudo ls
                         sudo pwd
                         sudo mkdir -p /tmp/app
@@ -31,7 +32,6 @@ pipeline {
                         sudo chown -R www-data:www-data /var/www/html/
                         sudo chmod -R 755 /var/www/html/
                         sudo systemctl restart apache2
-                     '
                     """
                 }
             }
