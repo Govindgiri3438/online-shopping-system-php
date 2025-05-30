@@ -22,9 +22,8 @@ pipeline {
                 sshagent (credentials: [env.SSH_CREDENTIALS_ID]) {
                     sh """
                     ssh -tt -o StrictHostKeyChecking=no  $DEPLOY_USER@$DEPLOY_HOST '
-                        sudo rm -rf $DEPLOY_PATH/*
+                        sudo find /var/www/html -mindepth 1 -maxdepth 1 ! -name upload -exec rm -rf {} +
                      '
-                        sudo mkdir -p /tmp/app
                         scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:/tmp/app/
                         sudo cp -r /tmp/app/* /var/www/html/
                         sudo chown -R www-data:www-data /var/www/html/
