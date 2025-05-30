@@ -24,10 +24,8 @@ pipeline {
                     ssh -tt -o StrictHostKeyChecking=no  $DEPLOY_USER@$DEPLOY_HOST '
                         sudo rm -rf $DEPLOY_PATH/*
                      '
-                        sudo ls
-                        sudo pwd
                         sudo mkdir -p /tmp/app
-                        scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:/tmp/app/
+                        scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
                         sudo cp -r /tmp/app/* /var/www/html/
                         sudo chown -R www-data:www-data /var/www/html/
                         sudo chmod -R 755 /var/www/html/
