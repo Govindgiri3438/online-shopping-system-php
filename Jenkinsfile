@@ -26,6 +26,7 @@ pipeline {
                      '
                         scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:/tmp/app/
                         sudo cp -r /tmp/app/* /var/www/html/
+                        #rsync -av --exclude='upload1/' --exclude='upload2/' /tmp/app/* /var/www/html/
                         sudo chown -R www-data:www-data /var/www/html/
                         sudo chmod -R 755 /var/www/html/
                         sudo systemctl restart apache2
