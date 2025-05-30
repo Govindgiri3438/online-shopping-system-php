@@ -26,7 +26,7 @@ pipeline {
                         sudo mkdir -p /tmp/app
                     '
                     scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:/tmp/app/
-                    sudo mv /tmp/app/* /var/www/html/
+                    sudo cp -r /tmp/app/* /var/www/html/
                     """
                 }
             }
