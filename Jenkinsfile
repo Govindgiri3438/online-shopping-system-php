@@ -25,6 +25,7 @@ pipeline {
                         sudo rm -rf $DEPLOY_PATH/*
                         sudo mkdir /tmp/app
                     '
+                    scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:/tmp/app/
                     scp -o StrictHostKeyChecking=no -r /tmp/app/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
                     """
                 }
