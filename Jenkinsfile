@@ -25,9 +25,9 @@ pipeline {
                         sudo rm -rf $DEPLOY_PATH/*
                         sudo mkdir -p /tmp/app
                         scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:/tmp/app/
-                        sudo cp -r /tmp/app/* $DEPLOY_HOST
-                        sudo chown -R www-data:www-data $DEPLOY_HOST
-                        sudo chmow -R 755 $DEPLOY_HOST
+                        sudo cp -r /tmp/app/* /var/www/html/
+                        sudo chown -R www-data:www-data /var/www/html/
+                        sudo chmod -R 755 /var/www/html/
                         sudo systemctl restart apache2
                      '
                     """
