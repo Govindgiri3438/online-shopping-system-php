@@ -26,6 +26,7 @@ pipeline {
                         sudo mkdir -p /tmp/app
                         scp -o StrictHostKeyChecking=no -r * $DEPLOY_USER@$DEPLOY_HOST:/tmp/app/
                         sudo cp -r /tmp/app/* /var/www/html/
+                        sudo systemctl restart apache2
                      '
                     """
                 }
