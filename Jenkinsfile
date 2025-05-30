@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git url: 'https://github.com/Govindgiri3438/online-shopping-system-php.git', branch: 'main', credentialsId: 'GIT_CREAD'
+                git url: 'https://github.com/Govindgiri3438/online-shopping-system-php.git', branch: 'master', credentialsId: 'GIT_CREAD'
 
             }
         }
